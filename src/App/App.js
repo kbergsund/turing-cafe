@@ -37,8 +37,8 @@ class App extends Component {
       },
       body: JSON.stringify(newResy)
     }).then(response => response.json())
-    .then(() => this.handlePost('☕️'))
-    .catch(error => this.handlePost(error.message))
+      .then(() => this.handlePost('☕️'))
+      .catch(error => this.handlePost(error.message))
   }
 
   handlePost = (buttonText) => {
@@ -47,11 +47,31 @@ class App extends Component {
     setTimeout(() => formButton.innerText = 'Make Reservation', 1500)
   }
 
+  deleteResy = (id) => {
+    const filteredResys = this.state.reservations.filter(resy => resy.id !== id)
+    this.setState({
+      reservations: filteredResys
+    })
+    fetch(`http://localhost:3001/api/v1/reservations/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(response => response.json())
+  }
 
   render() {
     const displayReservations = this.state.error ?
       <FetchError error={this.state.error} /> :
-      this.state.reservations && this.state.reservations.map(resy => <Reservations key={resy.id} name={resy.name} date={resy.date} time={resy.time} number={resy.number} />)
+      this.state.reservations && this.state.reservations.map(resy => <Reservations
+        key={resy.id}
+        id={resy.id}
+        name={resy.name}
+        date={resy.date}
+        time={resy.time}
+        number={resy.number}
+        deleteResy={this.deleteResy} />
+      )
 
     return (
       <div className="App">

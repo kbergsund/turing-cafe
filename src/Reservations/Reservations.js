@@ -1,14 +1,14 @@
 import React from 'react';
 import './Reservations.css';
 
-const Reservations = ({ name, date, time, number, error }) => {
+const Reservations = ({ id, name, date, time, number, deleteResy }) => {
   return (
     <section>
-      <h2>{error ? `${error.message}. Try again later!` : name}</h2>
+      <h2>{name}</h2>
       <p>{date}</p>
       <p>{time}pm</p>
       <p>Number of guests: {number}</p>
-      <button className="cancel-button">Cancel</button>
+      <button className="cancel-button" onClick={() => deleteResy(id)}>Cancel</button>
     </section>
   )
 }
