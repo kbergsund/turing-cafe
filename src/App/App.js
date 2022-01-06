@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Reservations from '../Reservations/Reservations';
 import ReservationForm from '../ReservationForm/ReservationForm';
+import FetchError from '../FetchError/FetchError';
 import './App.css';
 
 class App extends Component {
@@ -20,11 +21,11 @@ class App extends Component {
           reservations: data
         })
       })
-    // .catch(err => {
-    //   this.setState({
-    //     error: err.message
-    //   })
-    // })
+    .catch(err => {
+      this.setState({
+        error: err
+      })
+    })
   }
 
   addResy = (newResy) => {
@@ -33,7 +34,7 @@ class App extends Component {
 
   
   render() {
-    const displayReservations = this.state.reservations && this.state.reservations.map(resy => <Reservations key={resy.id} name={resy.name} date={resy.date} time={resy.time} number={resy.number} />)
+    const displayReservations = this.state.error ? <FetchError error={this.state.error}/> : this.state.reservations && this.state.reservations.map(resy => <Reservations key={resy.id} name={resy.name} date={resy.date} time={resy.time} number={resy.number} />)
 
     return (
       <div className="App">
