@@ -1,19 +1,29 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
 
+* {
+  box-sizing: border-box;
+}
+
 .App {
   display: flex;
   flex-direction: column;
-  align-items: center;
   background-image: url('../assets/cafe-img.jpeg');
   width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
+  padding: 2em;
 }
 
 .app-title {
   color: teal;
   font-family: 'Pacifico', cursive;
   font-size: 50px;
+}
+
+.resy-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 1em;
 }
