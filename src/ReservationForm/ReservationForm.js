@@ -17,6 +17,14 @@ const ReservationForm = (props) => {
       number
     }
     props.addResy(newResy)
+    clearInputs()
+  }
+
+  const clearInputs = () => {
+    setName('')
+    setDate('')
+    setTime('')
+    setNumber('')
   }
 
   return (
@@ -45,7 +53,7 @@ const ReservationForm = (props) => {
         name='number'
         value={number}
         onChange={e => setNumber(parseInt(e.target.value))} />
-      <button onClick={e => makeResy(e)}>Make Reservation</button>
+      <button id='formButton' onClick={e => makeResy(e)}>Make Reservation</button>
     </form>
   )
 }
