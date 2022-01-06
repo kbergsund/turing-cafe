@@ -13,6 +13,8 @@ p {
   margin: .5em;
 }
 
-button {
+.cancel-button {
+  height: 2em;
+  width: 80%;
   margin: .5em;
 }

@@ -1,0 +1,19 @@
+form {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 3em;
+  height: 1.7em;
+}
+
+button {
+  height: 100%;
+  margin: 0;
+  background: teal;
+  color: white;
+}
+
+input,
+button {
+  border: 1px solid lightgray;
+  width: 15%;
+}

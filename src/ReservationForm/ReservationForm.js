@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './ReservationForm.css';
 
 const ReservationForm = (props) => {
   const [name, setName] = useState('');
