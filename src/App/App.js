@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Reservations from '../Reservations/Reservations';
+import ReservationForm from '../ReservationForm/ReservationForm';
 import './App.css';
 
 class App extends Component {
@@ -26,6 +27,10 @@ class App extends Component {
     // })
   }
 
+  addResy = (newResy) => {
+    this.setState({ reservations: [...this.state.reservations, newResy]})
+  }
+
   
   render() {
     const displayReservations = this.state.reservations && this.state.reservations.map(resy => <Reservations key={resy.id} name={resy.name} date={resy.date} time={resy.time} number={resy.number} />)
@@ -34,7 +39,7 @@ class App extends Component {
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
         <div className='resy-form'>
-
+          <ReservationForm addResy={this.addResy}/>
         </div>
         <div className='resy-container'>
           {displayReservations}
